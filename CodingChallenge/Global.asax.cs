@@ -7,6 +7,9 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using SimpleInjector;
+using SimpleInjector.Integration.WebApi;
+using CodingChallenge.Models;
 
 namespace CodingChallenge
 {
@@ -17,7 +20,22 @@ namespace CodingChallenge
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //var container = new Container();
+            //container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+
+            //// Register your types, for instance using the scoped lifestyle:
+            //container.Register<ITituloRepository, TituloRepository>(Lifestyle.Scoped);
+
+            //// This is an extension method from the integration package.
+            //container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
+
+            //container.Verify();
+
+            //GlobalConfiguration.Configuration.DependencyResolver =
+            //    new SimpleInjectorWebApiDependencyResolver(container);
+
         }
     }
 }

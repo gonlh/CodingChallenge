@@ -3,47 +3,49 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Web;
+using CodingChallenge.Data.Classes;
 
 namespace CodingChallenge.Models
 {
     public class TituloRepository: ITituloRepository
     {
-        private static ConcurrentDictionary<string, TituloItem> _todos =
-             new ConcurrentDictionary<string, TituloItem>();
+ 
 
         public TituloRepository()
         {
-            Add(new TituloItem { Name = "Item1" });
+            
         }
 
-        public IEnumerable<TituloItem> GetAll()
+        public IEnumerable<Titulo> GetAll()
         {
-            return _todos.Values;
+            return Datos.Datos.Titulos;
         }
 
-        public void Add(TituloItem item)
-        {
-            item.Key = Guid.NewGuid().ToString();
-            _todos[item.Key] = item;
+        public void Add(Titulo item)
+        {           
+           
         }
 
-        public TituloItem Find(string key)
+        public IEnumerable<Titulo> Find(string key)
         {
-            TituloItem item;
-            _todos.TryGetValue(key, out item);
+
+            var titulosFiltrados = from titulo in Datos.Datos.Titulos
+                                   where titulo.Descripcion.ToLower().Contains(key.ToLower())
+                                   select titulo;
+            
+            return (IEnumerable < Titulo >) titulosFiltrados;
+        }
+
+        public Titulo Remove(string key)
+        {
+            Titulo item = null;
+            
             return item;
         }
 
-        public TituloItem Remove(string key)
-        {
-            TituloItem item;
-            _todos.TryRemove(key, out item);
-            return item;
+        public void Update(Titulo item)
+        {            
         }
-
-        public void Update(TituloItem item)
-        {
-            _todos[item.Key] = item;
-        }
+       
     }
 }

@@ -79,6 +79,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleInjector, Version=3.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.3.0\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Extensions.ExecutionContextScoping, Version=3.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Extensions.ExecutionContextScoping.3.3.0\lib\net45\SimpleInjector.Extensions.ExecutionContextScoping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.WebApi, Version=3.3.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.WebApi.3.3.0\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -96,6 +108,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -141,42 +157,46 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="npmPlaceholder.txt" />
-    <Content Include="Scripts\angular-animate.js" />
-    <Content Include="Scripts\angular-animate.min.js" />
-    <Content Include="Scripts\angular-aria.js" />
-    <Content Include="Scripts\angular-aria.min.js" />
-    <Content Include="Scripts\angular-material.js" />
-    <Content Include="Scripts\angular-material.min.js" />
-    <Content Include="Scripts\angular-messages.js" />
-    <Content Include="Scripts\angular-messages.min.js" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\autoCompleteController.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\JS\npmPlaceholder.txt" />
+    <Content Include="Scripts\JS\angular-animate.js" />
+    <Content Include="Scripts\JS\angular-animate.min.js" />
+    <Content Include="Scripts\JS\angular-aria.js" />
+    <Content Include="Scripts\JS\angular-aria.min.js" />
+    <Content Include="Scripts\JS\angular-material.js" />
+    <Content Include="Scripts\JS\angular-material.min.js" />
+    <Content Include="Scripts\JS\angular-messages.js" />
+    <Content Include="Scripts\JS\angular-messages.min.js" />
+    <Content Include="Scripts\JS\angular-resource.js" />
+    <Content Include="Scripts\JS\angular-resource.min.js" />
+    <Content Include="Scripts\JS\angular-route.js" />
+    <Content Include="Scripts\JS\angular-route.min.js" />
+    <Content Include="Scripts\JS\angular.js" />
+    <Content Include="Scripts\JS\angular.min.js" />
+    <Content Include="Scripts\JS\bootstrap.js" />
+    <Content Include="Scripts\JS\bootstrap.min.js" />
     <None Include=".bin\node.cmd" />
     <Content Include="package.json" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\BuscaTitulosController.js" />
-    <Content Include="Scripts\Home.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\ngAutoComplete.js" />
-    <Content Include="Scripts\svg-assets-cache.js" />
+    <None Include="Scripts\JS\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Controllers\Home.js" />
+    <Content Include="Scripts\JS\jquery-1.10.2.js" />
+    <Content Include="Scripts\JS\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\JS\modernizr-2.6.2.js" />
+    <Content Include="Scripts\JS\svg-assets-cache.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TituloController.cs" />
+    <Compile Include="Datos\Datos.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ITituloRepository.cs" />
+    <Compile Include="Models\TituloItem.cs" />
+    <Compile Include="Models\TituloRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +211,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\JS\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,7 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Scripts\Factorys\" />
+    <Folder Include="Scripts\Filters\" />
+    <Folder Include="Scripts\Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

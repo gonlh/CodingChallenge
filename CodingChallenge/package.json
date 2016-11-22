@@ -1,7 +1,9 @@
 {
-	"version": "1.0.0",
-	"name": "CodingChallenge",
-	"private": true,
-	"devDependencies": {
-	}
+  
+  "name": "CodingChallenge",
+  "private": true,
+  "version": "1.0.0",
+  "devDependencies": {
+  }
+
 }
