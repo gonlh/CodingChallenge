@@ -157,6 +157,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\AngularApp\app.js" />
+    <Content Include="Scripts\Factorys\factoryTitulos.js" />
     <Content Include="Scripts\JS\npmPlaceholder.txt" />
     <Content Include="Scripts\JS\angular-animate.js" />
     <Content Include="Scripts\JS\angular-animate.min.js" />
@@ -221,7 +223,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Factorys\" />
     <Folder Include="Scripts\Filters\" />
     <Folder Include="Scripts\Services\" />
   </ItemGroup>
