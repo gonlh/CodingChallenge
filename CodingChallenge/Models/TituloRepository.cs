@@ -16,6 +16,10 @@ namespace CodingChallenge.Models
             
         }
 
+        public Titulo GetById(int key)
+        {
+            return Datos.Datos.Titulos.First(x => x.Id == key);
+        }
         public IEnumerable<Titulo> GetAll()
         {
             return Datos.Datos.Titulos;

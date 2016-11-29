@@ -9,6 +9,8 @@ namespace CodingChallenge.Models
     public interface ITituloRepository
     {
         void Add(Titulo item);
+
+        Titulo GetById(int key);
         IEnumerable<Titulo> GetAll();
         IEnumerable<Titulo> Find(string key);
         Titulo Remove(string key);

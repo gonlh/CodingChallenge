@@ -12,8 +12,6 @@
 
     function AutoCompleteCtrl($http, $timeout, $q, $log, $routeParams, $resource, factoryTitulos) {
 
-
-
         var titulos = factoryTitulos;
 
 
@@ -23,25 +21,22 @@
         self.querySearch = querySearch;
 
         function querySearch(query) {
-
-            var results = loadTitulosByQuery(query), deferred;
-            if (self.simulateQuery) {
-                deferred = $q.defer();
-                $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-                return deferred.promise;
-            } else {
-                return results;
-            }
+            return loadTitulosByQuery(query).then(function (data) {
+                return data;
+            })  
         }
 
 
         function loadTitulosByQuery(query) {
             var allTitulos = [];
-            var result = [];
+            
+
+            var defered = $q.defer();
+            var promise = defered.promise;
 
             allTitulos = titulos.queryByName({ nombre: query },
                 function () {
-
+                    var result = [];
                     angular.forEach(allTitulos,
                             function (Titulo, key) {
                                 result.push(
@@ -51,6 +46,7 @@
                                     });
                             }
                     );
+                    defered.resolve(result);
                 },
 
                 function errorCallback(response) {
@@ -58,11 +54,7 @@
                 }
 
             );
-
-            return result;
-
+            return promise;
         }
-
-
     }
 })();

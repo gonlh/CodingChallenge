@@ -23,18 +23,17 @@ namespace CodingChallenge.Controllers
         // GET: api/Titulo
         //[HttpGet]
         //[Route("api/Titulo")]
-        public IEnumerable<string> Get()
+        public IEnumerable<Titulo> Get()
         {
-            var repositorio = new MockRepository().TituloRepository;
-            var titulos = repositorio.GetTitulos();
+            IEnumerable<Titulo> titulos = repository.GetAll();
 
-            return new string[] { "value1", "value2" };
+            return titulos;
         }
 
         //GET: api/Titulo/5
-        public string Get(int id)
+        public Titulo Get(int id)
         {
-            return "valueID";
+            return repository.GetById(id);
         }
 
 
